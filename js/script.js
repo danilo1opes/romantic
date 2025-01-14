@@ -47,3 +47,25 @@ function noTextNone() {
 }
 
 noTextNone();
+
+function animationScroll() {
+  const sections = document.querySelectorAll('.js-scroll');
+
+  if (sections.length > 0) {
+    const windowMiddle = window.innerHeight * 0.6;
+    function animaScroll() {
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const inSectionVisible = sectionTop - windowMiddle < 0;
+        if (inSectionVisible) section.classList.add('ativo');
+        else {
+          section.classList.remove('ativo');
+        }
+      });
+    }
+    animaScroll();
+    window.addEventListener('scroll', animaScroll);
+  }
+}
+
+animationScroll();
